@@ -1,0 +1,135 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Materials/Wood.material" type="Material" id=1]
+[ext_resource path="res://Objects/Bonfire/Bonfire.glb" type="PackedScene" id=2]
+[ext_resource path="res://Materials/Stone.material" type="Material" id=3]
+
+
+
+
+
+
+
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.881836, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.24375, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 0.0
+gravity = Vector3( 0, 3, 0 )
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+scale = 0.3
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.25, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.616541, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 0.0
+gravity = Vector3( 0, 2, 0 )
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+scale = 0.3
+scale_curve = SubResource( 9 )
+color = Color( 0.698039, 0.698039, 0.698039, 0.0823529 )
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=12]
+material = SubResource( 11 )
+
+[node name="Bonfire" instance=ExtResource( 2 )]
+
+[node name="Flame" type="Particles" parent="." index="0"]
+amount = 40
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="Smoke" type="Particles" parent="." index="1"]
+amount = 32
+lifetime = 1.5
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 12 )
+
+[node name="Stone01" parent="Stones" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone02" parent="Stones" index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone03" parent="Stones" index="2"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone04" parent="Stones" index="3"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone05" parent="Stones" index="4"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone06" parent="Stones" index="5"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone07" parent="Stones" index="6"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone08" parent="Stones" index="7"]
+material/0 = ExtResource( 3 )
+
+[node name="Stone09" parent="Stones" index="8"]
+material/0 = ExtResource( 3 )
+
+[node name="Board01" parent="Boards" index="0"]
+material/0 = ExtResource( 1 )
+
+[node name="Board02" parent="Boards" index="1"]
+material/0 = ExtResource( 1 )
+
+[node name="Board03" parent="Boards" index="2"]
+material/0 = ExtResource( 1 )
+
+[node name="Board04" parent="Boards" index="3"]
+material/0 = ExtResource( 1 )
+
+[node name="Board05" parent="Boards" index="4"]
+material/0 = ExtResource( 1 )
+
+[node name="Board07" parent="Boards" index="5"]
+material/0 = ExtResource( 1 )
