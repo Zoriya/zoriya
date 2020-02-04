@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Objects/Bonfire/Bonfire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Environment/Camp/Bonfire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Box.tscn" type="PackedScene" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -22,10 +23,10 @@ material/0 = null
 transform = Transform( 13.123, 0, 0, 0, 1, 0, 0, 0, 25.0779, 0, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756225, 6.07545 )
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.887075, 0.461625, 0, -0.461625, 0.887075, -2.88579, 12.3753, 28.3083 )
+
+[node name="Box" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.47961, 1 )
 
 [editable path="Bonfire"]

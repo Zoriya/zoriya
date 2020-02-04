@@ -1,15 +1,8 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Materials/Wood.material" type="Material" id=1]
-[ext_resource path="res://Objects/Bonfire/Bonfire.glb" type="PackedScene" id=2]
+[ext_resource path="res://Environment/Camp/Bonfire.glb" type="PackedScene" id=2]
 [ext_resource path="res://Materials/Stone.material" type="Material" id=3]
-
-
-
-
-
-
-
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0, 0, 1, 1, 0.881836, 0, 1 )
