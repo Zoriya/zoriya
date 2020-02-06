@@ -1,1 +1,6 @@
+# Import cache
 .import/
+
+# Build files
+*.pck
+*.x86_64

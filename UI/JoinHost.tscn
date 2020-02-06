@@ -1,0 +1,181 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/JoinHost.gd" type="Script" id=1]
+[ext_resource path="res://UI/ConnectionDialog.gd" type="Script" id=2]
+
+
+[node name="JoinHost" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -301.0
+margin_right = 518.0
+margin_bottom = 299.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -74.0
+margin_right = 78.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Host" type="VBoxContainer" parent="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Grid" type="GridContainer" parent="Tabs/Host"]
+margin_right = 158.0
+margin_bottom = 52.0
+size_flags_vertical = 2
+columns = 2
+
+[node name="PortLabel" type="Label" parent="Tabs/Host/Grid"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 19.0
+text = "Port:"
+
+[node name="Port" type="SpinBox" parent="Tabs/Host/Grid"]
+margin_left = 84.0
+margin_right = 158.0
+margin_bottom = 24.0
+max_value = 65535.0
+value = 10567.0
+
+[node name="MaxPlayersLabel" type="Label" parent="Tabs/Host/Grid"]
+margin_top = 33.0
+margin_right = 80.0
+margin_bottom = 47.0
+text = "Max players:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxPlayers" type="SpinBox" parent="Tabs/Host/Grid"]
+margin_left = 84.0
+margin_top = 28.0
+margin_right = 158.0
+margin_bottom = 52.0
+value = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Host" type="Button" parent="Tabs/Host"]
+margin_top = 66.0
+margin_right = 42.0
+margin_bottom = 86.0
+size_flags_horizontal = 0
+text = "Host"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join" type="VBoxContainer" parent="Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Grid" type="GridContainer" parent="Tabs/Join"]
+margin_right = 158.0
+margin_bottom = 70.0
+size_flags_vertical = 3
+columns = 2
+
+[node name="IpLabel" type="Label" parent="Tabs/Join/Grid"]
+margin_top = 5.0
+margin_right = 30.0
+margin_bottom = 19.0
+text = "IP:"
+
+[node name="Ip" type="LineEdit" parent="Tabs/Join/Grid"]
+margin_left = 34.0
+margin_right = 108.0
+margin_bottom = 24.0
+text = "127.0.0.1"
+expand_to_text_length = true
+
+[node name="PortLabel" type="Label" parent="Tabs/Join/Grid"]
+margin_top = 33.0
+margin_right = 30.0
+margin_bottom = 47.0
+text = "Port:"
+
+[node name="Port" type="SpinBox" parent="Tabs/Join/Grid"]
+margin_left = 34.0
+margin_top = 28.0
+margin_right = 108.0
+margin_bottom = 52.0
+max_value = 65535.0
+value = 10567.0
+
+[node name="Join" type="Button" parent="Tabs/Join"]
+margin_top = 74.0
+margin_right = 35.0
+margin_bottom = 94.0
+size_flags_horizontal = 0
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConnectionDialog" type="PopupDialog" parent="."]
+margin_right = 300.0
+margin_bottom = 99.9997
+popup_exclusive = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="ConnectionDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="ConnectionDialog/Container"]
+margin_left = 92.0
+margin_top = 30.0
+margin_right = 206.0
+margin_bottom = 44.0
+size_flags_horizontal = 4
+text = "123123asdasdasd"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ConnectionDialog/Container"]
+margin_left = 143.0
+margin_top = 48.0
+margin_right = 155.0
+margin_bottom = 68.0
+size_flags_horizontal = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Tabs/Host/Host" to="." method="_host"]
+[connection signal="pressed" from="Tabs/Join/Join" to="." method="_join"]
+[connection signal="pressed" from="ConnectionDialog/Container/Button" to="ConnectionDialog" method="_close"]
