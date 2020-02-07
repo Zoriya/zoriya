@@ -6,8 +6,15 @@ const JUMP_IMPULSE = 25
 
 var _velocity: Vector3
 
+func _ready() -> void:
+	if is_network_master():
+		$SpringArm/Camera.set_current(true)
+	else:
+		set_physics_process(false)
+
 func _physics_process(delta: float) -> void:
 	_velocity = calculate_velocity(move_and_slide(_velocity, Vector3.UP), delta)
+	rpc_unreliable("update_transform", get_global_transform())
 
 
 func input_direction() -> Vector3:
@@ -28,3 +35,7 @@ func calculate_velocity(old_velocity: Vector3, delta: float) -> Vector3:
 	elif not is_on_ceiling():
 		new_velocity.y = old_velocity.y + GRAVITY * delta
 	return new_velocity
+
+
+remote func update_transform(transform: Transform) -> void:
+	set_global_transform(transform)

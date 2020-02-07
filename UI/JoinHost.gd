@@ -26,4 +26,4 @@ func _join() -> void:
 
 func _load_world() -> void:
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://World/World.tscn")
+	get_tree().change_scene("res://Core/Main.tscn")
