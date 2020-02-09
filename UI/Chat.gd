@@ -21,11 +21,11 @@ func _input(event: InputEvent) -> void:
 
 
 func announce_connected(id: int) -> void:
-	$Panel/ChatWindow.bbcode_text += "\n%s [color=yellow]%d has joined the game.[/color]" % [_time_string(), id]
+	$Panel/ChatWindow.bbcode_text += "\n%s [color=yellow]%d has joined the game.[/color]" % [_time(), id]
 
 
 func announce_disconnected(id: int) -> void:
-	$Panel/ChatWindow.bbcode_text += "\n%s [color=yellow]%d has left the game.[/color]" % [_time_string(), id]
+	$Panel/ChatWindow.bbcode_text += "\n%s [color=yellow]%d has left the game.[/color]" % [_time(), id]
 
 
 func send_message(message: String) -> void:
@@ -34,9 +34,9 @@ func send_message(message: String) -> void:
 
 
 sync func print_message(id: int, message: String) -> void:
-	$Panel/ChatWindow.bbcode_text += "\n%s [[color=green]%d[/color]]: %s" % [_time_string(), id, message]
+	$Panel/ChatWindow.bbcode_text += "\n%s [[color=green]%d[/color]]: %s" % [_time(), id, message]
 
 
-func _time_string() -> String:
+func _time() -> String:
 	var time: Dictionary = OS.get_time()
-	return "[color=gray][%d:%d:%d][/color]" % [time.hour, time.minute, time.second]
+	return "[color=gray][%02d:%02d:%02d][/color]" % [time.hour, time.minute, time.second]
