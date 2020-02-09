@@ -12,6 +12,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if $InputField.has_focus():
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			$InputField.accept_event()
 			$InputField.release_focus()
 	elif event.is_action_pressed("ui_accept"):
 		if not $InputField.has_focus():

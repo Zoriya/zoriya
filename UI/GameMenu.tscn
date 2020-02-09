@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/GameMenu.gd" type="Script" id=1]
+
+[node name="GameMenu" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.5
+margin_top = -40.0
+margin_right = 55.5
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.5
+margin_top = -30.0
+margin_right = 45.5
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="Container"]
+margin_top = 4.0
+margin_right = 91.0
+margin_bottom = 24.0
+size_flags_horizontal = 5
+size_flags_vertical = 6
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Container"]
+margin_top = 36.0
+margin_right = 91.0
+margin_bottom = 56.0
+size_flags_horizontal = 5
+size_flags_vertical = 6
+text = "Exit"
+[connection signal="pressed" from="Container/Continue" to="." method="_continue"]
+[connection signal="pressed" from="Container/Exit" to="." method="_exit"]
