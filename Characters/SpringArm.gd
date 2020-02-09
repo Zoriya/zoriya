@@ -5,7 +5,11 @@ const ROTATION_SPEED := 0.005
 const ZOOM_SPEED := 0.5
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if is_network_master():
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		$Camera.set_current(true)
+	else:
+		set_process_input(false)
 
 
 func _input(event: InputEvent) -> void:

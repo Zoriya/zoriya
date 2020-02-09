@@ -12,11 +12,13 @@ sync func add_player(id: int) -> void:
 	player.set_name("Player" + str(id))
 	player.set_network_master(id)
 	player.set_translation(Vector3(0, 10, 0))
-	# warning-ignore:return_value_discarded
-	$Chat/InputField.connect("focus_entered", player, "set_input_enabled", [false])
-	# warning-ignore:return_value_discarded
-	$Chat/InputField.connect("focus_exited", player, "set_input_enabled", [true])
 	$World.add_child(player)
+	
+	if get_tree().get_network_unique_id() == id:
+		# warning-ignore:return_value_discarded
+		$Chat/InputField.connect("focus_entered", player, "set_input_enabled", [false])
+		# warning-ignore:return_value_discarded
+		$Chat/InputField.connect("focus_exited", player, "set_input_enabled", [true])
 
 
 # Send player info to the new connected player

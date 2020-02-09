@@ -10,9 +10,7 @@ var _fall_speed: float
 
 
 func _ready() -> void:
-	if is_network_master():
-		$SpringArm/Camera.set_current(true)
-	else:
+	if not is_network_master():
 		set_physics_process(false)
 
 
