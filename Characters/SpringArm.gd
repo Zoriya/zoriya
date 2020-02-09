@@ -9,16 +9,16 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-		return
-	
-	if event is InputEventMouseMotion:
+	if event.is_action_pressed("ui_cursor"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		elif Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif event.is_action_pressed("zoom_in"):
+		spring_length += ZOOM_SPEED
+	elif event.is_action_pressed("zoom_out"):
+		spring_length -= ZOOM_SPEED
+	elif Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * ROTATION_SPEED
 		rotation.x -= event.relative.y * ROTATION_SPEED
 		rotation.x = clamp(rotation.x, -PI / 2, 0)
-	elif event is InputEventMouseButton:
-		match event.button_index:
-			BUTTON_WHEEL_UP:
-				spring_length += ZOOM_SPEED
-			BUTTON_WHEEL_DOWN:
-				spring_length -= ZOOM_SPEED

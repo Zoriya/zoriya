@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Chat.gd" type="Script" id=1]
+
+[node name="Chat" type="VBoxContainer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -125.0
+margin_right = 220.0
+margin_bottom = -5.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 215.0
+margin_bottom = 92.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatWindow" type="RichTextLabel" parent="Panel"]
+margin_top = 4.0
+margin_right = 215.0
+margin_bottom = 92.0
+focus_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputField" type="LineEdit" parent="."]
+margin_top = 96.0
+margin_right = 215.0
+margin_bottom = 120.0
+focus_mode = 1
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_entered" from="InputField" to="." method="send_message"]
