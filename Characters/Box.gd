@@ -6,7 +6,7 @@ const JUMP_IMPULSE = 25
 
 var input_enabled := true setget set_input_enabled
 
-var _velocity: Vector3
+var _fall_speed: float
 
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_velocity = calculate_velocity(move_and_slide(_velocity, Vector3.UP), delta)
+	_fall_speed = move_and_slide(velocity(delta), Vector3.UP).y
 	rpc_unreliable("update_transform", get_global_transform())
 
 
@@ -39,13 +39,16 @@ func input_direction() -> Vector3:
 	return direction.normalized()
 
 
-func calculate_velocity(old_velocity: Vector3, delta: float) -> Vector3:
-	var new_velocity: Vector3 = input_direction() * MOVE_SPEED
+func velocity(delta: float) -> Vector3:
+	var velocity: Vector3 = input_direction() * MOVE_SPEED
 	if is_on_floor():
-		new_velocity.y = JUMP_IMPULSE if input_enabled and Input.is_action_just_pressed("jump") else GRAVITY
+		if input_enabled and Input.is_action_just_pressed("jump"):
+			velocity.y = JUMP_IMPULSE
+		else:
+			velocity.y = GRAVITY
 	elif not is_on_ceiling():
-		new_velocity.y = old_velocity.y + GRAVITY * delta
-	return new_velocity
+		velocity.y = _fall_speed + GRAVITY * delta
+	return velocity
 
 
 remote func update_transform(transform: Transform) -> void:
