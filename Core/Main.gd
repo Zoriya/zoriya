@@ -4,6 +4,7 @@ extends Node
 func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	get_tree().connect("network_peer_connected", self, "_send_info")
+	get_tree().connect("network_peer_disconnected", self, "_remove_player")
 	rpc("add_player", get_tree().get_network_unique_id())
 
 
@@ -19,6 +20,10 @@ sync func add_player(id: int) -> void:
 		$Chat/InputField.connect("focus_entered", player, "set_input_enabled", [false])
 		# warning-ignore:return_value_discarded
 		$Chat/InputField.connect("focus_exited", player, "set_input_enabled", [true])
+
+
+func _remove_player(id: int):
+	get_node("World/Player%d" % id).queue_free()
 
 
 # Send player info to the new connected player
