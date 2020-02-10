@@ -17,4 +17,4 @@ shape = SubResource( 1 )
 spring_length = 10.0
 script = ExtResource( 2 )
 
-[node name="Camera" type="InterpolatedCamera" parent="SpringArm"]
+[node name="Camera" type="Camera" parent="SpringArm"]
