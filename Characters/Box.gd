@@ -1,6 +1,7 @@
 class_name Box
 extends KinematicBody
 
+
 const MOVE_SPEED = 10
 const GRAVITY = -80
 const JUMP_IMPULSE = 25

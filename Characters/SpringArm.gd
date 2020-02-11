@@ -4,6 +4,7 @@ extends SpringArm
 const ROTATION_SPEED := 0.005
 const ZOOM_SPEED := 0.5
 
+
 func _ready() -> void:
 	if is_network_master():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
