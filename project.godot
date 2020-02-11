@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody",
+"class": "Box",
+"language": "GDScript",
+"path": "res://Characters/Box.gd"
+} ]
 _global_script_class_icons={
-
+"Box": ""
 }
 
 [application]

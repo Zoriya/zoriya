@@ -1,3 +1,4 @@
+class_name Box
 extends KinematicBody
 
 const MOVE_SPEED = 10
@@ -5,6 +6,7 @@ const GRAVITY = -80
 const JUMP_IMPULSE = 25
 
 var input_enabled := true setget set_input_enabled
+sync var health := 100
 
 var _fall_speed: float
 
@@ -21,6 +23,11 @@ func _physics_process(delta: float) -> void:
 
 func set_input_enabled(enabled: bool) -> void:
 	input_enabled = enabled
+
+
+func change_health(value: int):
+	rset("health", health + value)
+	$DamageText.show_damage(value)
 
 
 func input_direction() -> Vector3:
