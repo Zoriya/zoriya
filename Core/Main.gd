@@ -23,6 +23,10 @@ sync func add_player(id: int) -> void:
 		$Chat/InputField.connect("focus_entered", player, "set_input_enabled", [false])
 		# warning-ignore:return_value_discarded
 		$Chat/InputField.connect("focus_exited", player, "set_input_enabled", [true])
+		# warning-ignore:return_value_discarded
+		$DeathDialog.connect("spirit_released", player, "release_spirit")
+		# warning-ignore:return_value_discarded
+		player.connect("died", $DeathDialog, "popup_centered")
 
 
 func _remove_player(id: int):

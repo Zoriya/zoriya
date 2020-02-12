@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Core/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Core/Main.gd" type="Script" id=2]
 [ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/GameMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/DeathDialog.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 4 )]
 visible = false
+
+[node name="DeathDialog" parent="." instance=ExtResource( 5 )]
 
 [node name="Chat" parent="." instance=ExtResource( 3 )]
 
