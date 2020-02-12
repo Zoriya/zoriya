@@ -16,13 +16,15 @@ var _fall_speed: float
 
 
 func _ready() -> void:
+	rpc_config("set_global_transform", MultiplayerAPI.RPC_MODE_REMOTE)
+	rpc_config("set_translation", MultiplayerAPI.RPC_MODE_SYNC)
 	if not is_network_master():
 		set_physics_process(false)
 
 
 func _physics_process(delta: float) -> void:
 	_fall_speed = move_and_slide(velocity(delta), Vector3.UP).y
-	rpc_unreliable("update_transform", get_global_transform())
+	rpc_unreliable("set_global_transform", get_global_transform())
 
 
 func set_input_enabled(enabled: bool) -> void:
@@ -65,14 +67,6 @@ func velocity(delta: float) -> Vector3:
 
 
 func release_spirit():
-	rpc("update_translation", Vector3(0, 10, 0))
+	rpc("set_translation", Vector3(0, 10, 0))
 	rset("health", MAX_HEALTH)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-
-sync func update_translation(translation: Vector3):
-	set_translation(translation)
-
-
-remote func update_transform(transform: Transform) -> void:
-	set_global_transform(transform)
