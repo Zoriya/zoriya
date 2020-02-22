@@ -27,6 +27,8 @@ sync func add_player(id: int) -> void:
 		$DeathDialog.connect("spirit_released", player, "release_spirit")
 		# warning-ignore:return_value_discarded
 		player.connect("died", $DeathDialog, "popup_centered")
+		# warning-ignore:return_value_discarded
+		player.get_node("SpringArm/Camera/Interaction").connect("interaction_text_updated", $Crosshair, "set_text")
 
 
 func _remove_player(id: int):

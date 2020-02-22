@@ -18,7 +18,10 @@ var _fall_speed: float
 func _ready() -> void:
 	rpc_config("set_global_transform", MultiplayerAPI.RPC_MODE_REMOTE)
 	rpc_config("set_translation", MultiplayerAPI.RPC_MODE_SYNC)
-	if not is_network_master():
+
+	if is_network_master():
+		$SpringArm/Camera/Interaction.add_exception(self)
+	else:
 		set_physics_process(false)
 
 
@@ -43,10 +46,10 @@ func change_health(value: int):
 func input_direction() -> Vector3:
 	if not input_enabled:
 		return Vector3.ZERO
-	
+
 	var x_strength = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var z_strength = Input.get_action_strength("move_back") - Input.get_action_strength("move_front")
-	
+
 	var direction := Vector3()
 	direction += $SpringArm.global_transform.basis.x * x_strength
 	direction += $SpringArm.global_transform.basis.z * z_strength
