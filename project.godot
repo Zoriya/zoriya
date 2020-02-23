@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Box",
 "language": "GDScript",
 "path": "res://Characters/Box.gd"
+}, {
+"base": "RigidBody",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Items/Item.gd"
 } ]
 _global_script_class_icons={
-"Box": ""
+"Box": "",
+"Item": ""
 }
 
 [application]
@@ -71,6 +77,11 @@ zoom_out={
 ui_cursor={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777240,"unicode":0,"echo":false,"script":null)
+ ]
+}
+pick={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
 

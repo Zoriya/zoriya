@@ -9,6 +9,12 @@ func _ready() -> void:
 		set_enabled(true)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pick"):
+		var item: = get_collider() as Item
+		if item != null:
+			item.rpc("queue_free")
+
 func _process(_delta: float) -> void:
 	var collider: Object = get_collider()
 	if collider != null and collider.has_method("interaction_text"):
