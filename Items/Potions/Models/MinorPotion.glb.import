@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/MinorPotion.glb-e7435e2a79576a898a87b46f036966e5.scn"
+path="res://.import/MinorPotion.glb-6c909b54ef2bb9201f81514efb657989.scn"
 
 [deps]
 
-source_file="res://Items/Potions/MinorPotion.glb"
-dest_files=[ "res://.import/MinorPotion.glb-e7435e2a79576a898a87b46f036966e5.scn" ]
+source_file="res://Items/Potions/Models/MinorPotion.glb"
+dest_files=[ "res://.import/MinorPotion.glb-6c909b54ef2bb9201f81514efb657989.scn" ]
 
 [params]
 

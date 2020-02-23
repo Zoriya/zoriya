@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/LesserPotion.glb-2413fdd9863d4acabbc93c4dc34c0d30.scn"
+path="res://.import/LesserPotion.glb-95063158c4e410c5eb1a72b7e2840da8.scn"
 
 [deps]
 
-source_file="res://Items/Potions/LesserPotion.glb"
-dest_files=[ "res://.import/LesserPotion.glb-2413fdd9863d4acabbc93c4dc34c0d30.scn" ]
+source_file="res://Items/Potions/Models/LesserPotion.glb"
+dest_files=[ "res://.import/LesserPotion.glb-95063158c4e410c5eb1a72b7e2840da8.scn" ]
 
 [params]
 

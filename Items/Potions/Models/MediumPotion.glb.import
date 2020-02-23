@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/MediumPotion.glb-98d063e72430410c325f9f81d4a480d0.scn"
+path="res://.import/MediumPotion.glb-a554c609074fa1bbec1c7c2277d01cc1.scn"
 
 [deps]
 
-source_file="res://Items/Potions/MediumPotion.glb"
-dest_files=[ "res://.import/MediumPotion.glb-98d063e72430410c325f9f81d4a480d0.scn" ]
+source_file="res://Items/Potions/Models/MediumPotion.glb"
+dest_files=[ "res://.import/MediumPotion.glb-a554c609074fa1bbec1c7c2277d01cc1.scn" ]
 
 [params]
 

@@ -2,6 +2,8 @@
 
 [ext_resource path="res://Core/FloatingText/AileronSemiBold.otf" type="DynamicFontData" id=1]
 
+
+
 [resource]
 size = 42
 outline_size = 2

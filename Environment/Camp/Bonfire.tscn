@@ -5,6 +5,8 @@
 [ext_resource path="res://Materials/Stone.material" type="Material" id=3]
 [ext_resource path="res://Environment/Camp/Bonfire.gd" type="Script" id=4]
 
+
+
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0, 0, 1, 1, 0.881836, 0, 1 )
 

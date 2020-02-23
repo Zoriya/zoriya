@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "Box",
 "language": "GDScript",
-"path": "res://Characters/Box.gd"
+"path": "res://Characters/Player/Box.gd"
 }, {
 "base": "RigidBody",
 "class": "Item",
@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Zoriya"
-run/main_scene="res://UI/JoinHost.tscn"
+run/main_scene="res://UI/JoinHost/JoinHost.tscn"
 config/icon="res://Icon.png"
 
 [input]
