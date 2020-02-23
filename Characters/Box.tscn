@@ -6,25 +6,31 @@
 [ext_resource path="res://Characters/Interaction.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.25, 0.85, 0.25 )
 
 [node name="Box" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0 )
 shape = SubResource( 1 )
 
 [node name="Mesh" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0 )
+width = 0.5
+height = 1.7
+depth = 0.5
 
 [node name="SpringArm" type="SpringArm" parent="."]
-spring_length = 10.0
+spring_length = 5.0
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="SpringArm"]
-h_offset = 2.0
+h_offset = 1.0
 v_offset = 2.0
 
 [node name="Interaction" type="RayCast" parent="SpringArm/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0 )
 enabled = true
 exclude_parent = false
 cast_to = Vector3( 0, 0, -15 )
