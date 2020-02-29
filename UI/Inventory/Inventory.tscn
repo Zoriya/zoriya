@@ -30,7 +30,6 @@ margin_bottom = -5.0
 auto_height = true
 max_columns = 10
 same_column_width = true
-fixed_icon_size = Vector2( 50, 50 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
