@@ -24,6 +24,6 @@ func show_connection_failed() -> void:
 	popup_centered()
 
 
-func _close():
+func _close() -> void:
 	get_tree().set_network_peer(null)
 	hide()

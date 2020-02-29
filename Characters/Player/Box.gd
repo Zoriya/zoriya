@@ -34,7 +34,7 @@ func set_input_enabled(enabled: bool) -> void:
 	input_enabled = enabled
 
 
-func change_health(value: int):
+func change_health(value: int) -> void:
 	if health <= 0:
 		return
 	$DamageText.show_damage(value)
@@ -69,7 +69,7 @@ func velocity(delta: float) -> Vector3:
 	return velocity
 
 
-func release_spirit():
+func release_spirit() -> void:
 	rpc("set_translation", Vector3(0, 10, 0))
 	rset("health", MAX_HEALTH)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

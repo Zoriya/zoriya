@@ -1,7 +1,7 @@
 extends Spatial
 
 
-func _start_dealing_damage(body: Node):
+func _start_dealing_damage(body: Node) -> void:
 	if body is Box:
 		var timer := Timer.new()
 		timer.set_name(body.get_name() + "Timer")
@@ -12,6 +12,6 @@ func _start_dealing_damage(body: Node):
 		add_child(timer)
 
 
-func _stop_dealing_damage(body: Node):
+func _stop_dealing_damage(body: Node) -> void:
 	if body is Box:
 		get_node(body.get_name() + "Timer").queue_free()

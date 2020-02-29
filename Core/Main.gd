@@ -33,7 +33,7 @@ sync func add_player(id: int) -> void:
 		player.get_node("SpringArm/Camera/Interaction").connect("item_picked", $Inventory, "pick_item")
 
 
-func _remove_player(id: int):
+func _remove_player(id: int) -> void:
 	get_node("World/Player%d" % id).queue_free()
 
 
@@ -41,7 +41,7 @@ func _remove_player(id: int):
 func _send_info(id: int) -> void:
 	rpc_id(id, "add_player", get_tree().get_network_unique_id())
 
-func _on_server_disconnected():
+func _on_server_disconnected() -> void:
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://UI/JoinHost.tscn")
 	OS.alert("You have been disconnected from the server", "Connection lost")
