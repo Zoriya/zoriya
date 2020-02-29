@@ -2,6 +2,7 @@ extends RayCast
 
 
 signal interaction_text_updated(text)
+signal item_picked(item)
 
 
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pick"):
 		var item: = get_collider() as Item
 		if item != null:
-			item.rpc("queue_free")
+			emit_signal("item_picked", item)
 
 func _process(_delta: float) -> void:
 	var collider: Object = get_collider()

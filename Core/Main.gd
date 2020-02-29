@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 sync func add_player(id: int) -> void:
-	var player := preload("res://Characters/Box.tscn").instance()
+	var player := preload("res://Characters/Player/Box.tscn").instance()
 	player.set_name("Player" + str(id))
 	player.set_network_master(id)
 	player.set_translation(Vector3(0, 10, 0))
@@ -29,6 +29,8 @@ sync func add_player(id: int) -> void:
 		player.connect("died", $DeathDialog, "popup_centered")
 		# warning-ignore:return_value_discarded
 		player.get_node("SpringArm/Camera/Interaction").connect("interaction_text_updated", $Crosshair, "set_text")
+		# warning-ignore:return_value_discarded
+		player.get_node("SpringArm/Camera/Interaction").connect("item_picked", $Inventory, "pick_item")
 
 
 func _remove_player(id: int):

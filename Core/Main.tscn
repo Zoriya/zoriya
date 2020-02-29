@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Core/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Core/Main.gd" type="Script" id=2]
@@ -6,10 +6,8 @@
 [ext_resource path="res://UI/GameMenu/GameMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/DeathDialog/DeathDialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/Crosshair/Crosshair.tscn" type="PackedScene" id=6]
-
-
-
-
+[ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/InfoMessages/InfoMessages.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -28,9 +26,14 @@ shape = SubResource( 1 )
 
 [node name="Crosshair" parent="." instance=ExtResource( 6 )]
 
+[node name="InfoMessages" parent="." instance=ExtResource( 8 )]
+
 [node name="DeathDialog" parent="." instance=ExtResource( 5 )]
 
 [node name="Chat" parent="." instance=ExtResource( 3 )]
 
+[node name="Inventory" parent="." instance=ExtResource( 7 )]
+
 [node name="GameMenu" parent="." instance=ExtResource( 4 )]
 visible = false
+[connection signal="inventory_is_full" from="Inventory" to="InfoMessages" method="show_message" binds= [ "Inventory is full" ]]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Icon/Slot.png" type="Texture" id=1]
+[ext_resource path="res://UI/Icon/Icon.gd" type="Script" id=2]
+
+[node name="Icon" type="Viewport"]
+size = Vector2( 50, 50 )
+own_world = true
+transparent_bg = true
+msaa = 4
+render_target_v_flip = true
+script = ExtResource( 2 )
+
+[node name="Count" type="Label" parent="."]
+margin_right = 44.0
+margin_bottom = 14.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = ExtResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 1 )
+fov = 22.0
