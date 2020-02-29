@@ -13,5 +13,6 @@ func set_item(item: Item) -> void:
 	item.connect("count_changed", self, "_display_count")
 	_display_count(item.count)
 
+
 func _display_count(count: int) -> void:
 	$Count.text = str(count)
