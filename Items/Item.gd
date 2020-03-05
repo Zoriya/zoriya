@@ -4,6 +4,8 @@ extends RigidBody
 
 signal count_changed(new_count)
 
+const icon_frame: Resource = preload("res://UI/Icon/Slot.png")
+
 export var count := 1 setget set_count
 export var item_name: String
 export var stack_size := 1

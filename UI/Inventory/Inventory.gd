@@ -3,14 +3,13 @@ extends WindowDialog
 
 signal inventory_is_full
 
-const empty_slot: Resource = preload("res://UI/Icon/Slot.png")
-const inventory_size: int = 18
+const inventory_size: = 18
 
 
 func _ready() -> void:
 	#  Fill inventory with empty slots
 	for _i in range(inventory_size):
-		$ItemList.add_icon_item(empty_slot, false)
+		$ItemList.add_icon_item(Item.icon_frame, false)
 
 
 func _input(event: InputEvent) -> void:
