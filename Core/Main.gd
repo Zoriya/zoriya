@@ -15,7 +15,7 @@ sync func add_player(id: int) -> void:
 	var player := preload("res://Characters/Player/Box.tscn").instance()
 	player.set_name("Player" + str(id))
 	player.set_network_master(id)
-	player.set_translation(Vector3(0, 10, 0))
+	player.set_translation(Vector3(0, 30, 0))
 	$World.add_child(player)
 
 	if get_tree().get_network_unique_id() == id:
