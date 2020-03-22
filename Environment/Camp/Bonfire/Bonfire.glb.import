@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Bonfire.glb-048edbe8166a3827ab790145f08f6910.scn"
+path="res://.import/Bonfire.glb-8fca5fc3e178c21c584b1aa1e12e41c2.scn"
 
 [deps]
 
-source_file="res://Environment/Camp/Bonfire.glb"
-dest_files=[ "res://.import/Bonfire.glb-048edbe8166a3827ab790145f08f6910.scn" ]
+source_file="res://Environment/Camp/Bonfire/Bonfire.glb"
+dest_files=[ "res://.import/Bonfire.glb-8fca5fc3e178c21c584b1aa1e12e41c2.scn" ]
 
 [params]
 
@@ -16,14 +16,15 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-materials/location=1
-materials/storage=1
+materials/location=0
+materials/storage=0
 materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
+skins/use_named_skins=true
 external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15
