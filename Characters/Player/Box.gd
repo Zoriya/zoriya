@@ -4,15 +4,17 @@ extends KinematicBody
 
 signal died
 
+const MOTION_INTERPOLATE_SPEED = 20
+const VELOCITY_INTERPOLATE_SPEED = 2
 const MOVE_SPEED = 10
-const GRAVITY = -80
-const JUMP_IMPULSE = 25
+const JUMP_IMPULSE = 4
 const MAX_HEALTH = 20
 
 var input_enabled := true setget set_input_enabled
 sync var health := MAX_HEALTH
 
-var _fall_speed: float
+var _motion: Vector3
+var _velocity: Vector3
 
 
 func _ready() -> void:
@@ -26,7 +28,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_fall_speed = move_and_slide(velocity(delta), Vector3.UP).y
+	_motion = _motion.linear_interpolate(input_direction() * MOVE_SPEED, MOTION_INTERPOLATE_SPEED * delta)
+	_velocity = move_and_slide(recalculate_velocity(delta), Vector3.UP, true)
 	rpc_unreliable("set_global_transform", get_global_transform())
 
 
@@ -57,16 +60,18 @@ func input_direction() -> Vector3:
 	return direction.normalized()
 
 
-func velocity(delta: float) -> Vector3:
-	var velocity: Vector3 = input_direction() * MOVE_SPEED
+func recalculate_velocity(delta: float) -> Vector3:
+	var new_velocity: Vector3
 	if is_on_floor():
+		new_velocity = _motion
 		if input_enabled and Input.is_action_just_pressed("jump"):
-			velocity.y = JUMP_IMPULSE
+			new_velocity.y = JUMP_IMPULSE
 		else:
-			velocity.y = GRAVITY
-	elif not is_on_ceiling():
-		velocity.y = _fall_speed + GRAVITY * delta
-	return velocity
+			new_velocity.y = -ProjectSettings.get_setting("physics/3d/default_gravity")
+	else:
+		new_velocity = _velocity.linear_interpolate(_motion, VELOCITY_INTERPOLATE_SPEED * delta)
+		new_velocity.y = _velocity.y - ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+	return new_velocity
 
 
 func release_spirit() -> void:
