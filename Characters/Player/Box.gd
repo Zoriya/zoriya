@@ -75,6 +75,6 @@ func recalculate_velocity(delta: float) -> Vector3:
 
 
 func release_spirit() -> void:
-	rpc("set_translation", Vector3(0, 10, 0))
+	rpc("set_translation", Vector3(0, 30, 0))
 	rset("health", MAX_HEALTH)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
