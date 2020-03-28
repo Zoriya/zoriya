@@ -4,8 +4,6 @@ extends KinematicBody
 
 signal died
 
-const MOTION_INTERPOLATE_SPEED = 20
-const VELOCITY_INTERPOLATE_SPEED = 2
 const MOVE_SPEED = 10
 const JUMP_IMPULSE = 4
 const MAX_HEALTH = 20
@@ -28,8 +26,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_motion = _motion.linear_interpolate(input_direction() * MOVE_SPEED, MOTION_INTERPOLATE_SPEED * delta)
-	_velocity = move_and_slide(recalculate_velocity(delta), Vector3.UP, true)
+	_motion = _motion.linear_interpolate(input_direction() * MOVE_SPEED, ZoriyaSettings.get_motion_interpolate_speed() * delta)
+	_velocity = move_and_slide(calculate_velocity(delta), Vector3.UP, true)
 	rpc_unreliable("set_global_transform", get_global_transform())
 
 
@@ -60,17 +58,17 @@ func input_direction() -> Vector3:
 	return direction.normalized()
 
 
-func recalculate_velocity(delta: float) -> Vector3:
+func calculate_velocity(delta: float) -> Vector3:
 	var new_velocity: Vector3
 	if is_on_floor():
 		new_velocity = _motion
 		if input_enabled and Input.is_action_just_pressed("jump"):
 			new_velocity.y = JUMP_IMPULSE
 		else:
-			new_velocity.y = -ProjectSettings.get_setting("physics/3d/default_gravity")
+			new_velocity.y = -ZoriyaSettings.get_gravity()
 	else:
-		new_velocity = _velocity.linear_interpolate(_motion, VELOCITY_INTERPOLATE_SPEED * delta)
-		new_velocity.y = _velocity.y - ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+		new_velocity = _velocity.linear_interpolate(_motion, ZoriyaSettings.get_velocity_interpolate_speed() * delta)
+		new_velocity.y = _velocity.y - ZoriyaSettings.get_gravity() * delta
 	return new_velocity
 
 

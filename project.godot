@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Item",
 "language": "GDScript",
 "path": "res://Items/Item.gd"
+}, {
+"base": "Reference",
+"class": "ZoriyaSettings",
+"language": "GDScript",
+"path": "res://Core/ZoriyaSettings.gd"
 } ]
 _global_script_class_icons={
 "Box": "",
-"Item": ""
+"Item": "",
+"ZoriyaSettings": ""
 }
 
 [application]
@@ -1144,6 +1150,11 @@ inventory={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[physics]
+
+3d/velocity_interpolate_speed=2
+3d/motion_interpolate_speed=20
 
 [rendering]
 
