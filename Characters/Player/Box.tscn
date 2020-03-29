@@ -5,9 +5,6 @@
 [ext_resource path="res://Core/FloatingText/FloatingText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Characters/Player/Interaction.gd" type="Script" id=4]
 
-
-
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.25, 0.85, 0.25 )
 
@@ -25,15 +22,16 @@ height = 1.7
 depth = 0.5
 
 [node name="SpringArm" type="SpringArm" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 spring_length = 5.0
+margin = 0.5
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="SpringArm"]
 h_offset = 1.0
-v_offset = 2.0
 
 [node name="Interaction" type="RayCast" parent="SpringArm/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 enabled = true
 exclude_parent = false
 cast_to = Vector3( 0, 0, -15 )
