@@ -22,6 +22,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2469, 10.7349 )
 [node name="MinorHealingPotion" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2469, 9.85156 )
 
+[node name="LesserHealingPotion2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.552968, 23.2469, 10.2994 )
+
+[node name="MediumHealingPotion2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.552968, 23.2469, 10.7349 )
+
+[node name="MinorHealingPotion2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.552968, 23.2469, 9.85156 )
+
 [node name="DirectionalLight2" type="DirectionalLight" parent="."]
 transform = Transform( 0.999985, 0.00485038, -0.00237829, -0.00250519, 0.80643, 0.591324, 0.00478607, -0.591309, 0.806431, 0, 100, 0 )
 shadow_enabled = true
