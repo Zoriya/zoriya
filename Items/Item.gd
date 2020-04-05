@@ -25,7 +25,7 @@ func is_stackable() -> bool:
 
 
 func add_to_stack(other_item: Item) -> void:
-	if typeof(self) != typeof(other_item):
+	if item_name != other_item.item_name:
 		return
 	if count + other_item.count > stack_size:
 		other_item.count -= stack_size - count
