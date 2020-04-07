@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Core/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Core/Main.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI/Crosshair/Crosshair.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/InfoMessages/InfoMessages.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/DraggedItem/DraggedItem.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -26,4 +27,7 @@ script = ExtResource( 2 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 4 )]
 visible = false
+
+[node name="DraggedItem" parent="." instance=ExtResource( 9 )]
 [connection signal="inventory_is_full" from="Inventory" to="InfoMessages" method="show_message" binds= [ "Inventory is full" ]]
+[connection signal="pick_or_put_requested" from="Inventory" to="DraggedItem" method="drag"]

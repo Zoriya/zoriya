@@ -1,10 +1,17 @@
+class_name Icon
 extends Viewport
 
 
-func set_item(item: Item) -> void:
+const icon_frame: Resource = preload("res://UI/Icon/Slot.png")
+
+var item: Item setget set_item
+
+
+func set_item(new_item: Item) -> void:
 	# Reparent
-	item.get_parent().remove_child(item)
-	add_child(item)
+	new_item.get_parent().remove_child(new_item)
+	add_child(new_item)
+	item = new_item
 
 	# Set display properties
 	item.mode = RigidBody.MODE_STATIC

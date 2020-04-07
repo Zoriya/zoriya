@@ -11,4 +11,4 @@ static func get_velocity_interpolate_speed() -> int:
 
 
 static func get_motion_interpolate_speed() -> int:
-	return ProjectSettings.get_setting("physics/3d/motion_interpolate_speed") 
+	return ProjectSettings.get_setting("physics/3d/motion_interpolate_speed")
