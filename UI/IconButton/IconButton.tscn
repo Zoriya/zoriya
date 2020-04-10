@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/IconButton/IconButton.gd" type="Script" id=2]
+
+[node name="IconButton" type="Button"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+expand_icon = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Viewport" parent="."]
+size = Vector2( 64, 64 )
+own_world = true
+transparent_bg = true
+msaa = 4
+render_target_v_flip = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Count" type="Label" parent="Icon"]
+margin_top = 52.0
+margin_right = 64.0
+grow_horizontal = 0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Icon"]
+
+[node name="Camera" type="Camera" parent="Icon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 1 )
+fov = 22.0

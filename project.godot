@@ -14,10 +14,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Player/Box.gd"
 }, {
-"base": "Viewport",
-"class": "Icon",
+"base": "Button",
+"class": "IconButton",
 "language": "GDScript",
-"path": "res://UI/Icon/Icon.gd"
+"path": "res://UI/IconButton/IconButton.gd"
 }, {
 "base": "RigidBody",
 "class": "Item",
@@ -31,7 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Box": "",
-"Icon": "",
+"IconButton": "",
 "Item": "",
 "ZoriyaSettings": ""
 }
