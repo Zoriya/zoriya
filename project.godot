@@ -1165,4 +1165,4 @@ inventory={
 [rendering]
 
 quality/filters/msaa=4
-environment/default_environment="res://DefaultEnv.tres"
+environment/default_environment="res://Core/Environment.tres"
