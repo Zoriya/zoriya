@@ -1,8 +1,9 @@
 shader_type spatial;
+render_mode specular_schlick_ggx;
 
 uniform float speed : hint_range(0.5, 3.0) = 1.0;
 uniform float amount : hint_range(0.05, 0.5) = 0.2;
-uniform vec4 color: hint_color = vec4(0.25, 0.6, 0.8, 1.0);
+uniform vec4 color: hint_color = vec4(0.3, 0.6, 0.8, 1.0);
 uniform float transparency: hint_range(0.1, 20.0) = 0.4;
 
 float phase(float value) {
@@ -45,13 +46,14 @@ void vertex() {
 
 void fragment() {
 	NORMAL = normalize(cross(dFdx(VERTEX), dFdy(VERTEX)));
-	ALBEDO = color.rgb;
 	ROUGHNESS = 0.2;
-	SPECULAR = 0.5;
 
-	float depth = 2.0 * texture(DEPTH_TEXTURE, SCREEN_UV).r - 1.0;
-	depth = PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]);
-	depth += VERTEX.z;
-	depth = exp(-depth * transparency);
-	ALPHA = clamp(1.0 - depth, 0.0, 1.0);
+	vec2 refraction_uv = SCREEN_UV + NORMAL.xy * 0.075 / PROJECTION_MATRIX[2][2] / VERTEX.z;
+	float depth_blend = 2.0 * texture(DEPTH_TEXTURE, refraction_uv).r - 1.0;
+	depth_blend = PROJECTION_MATRIX[3][2] / (depth_blend + PROJECTION_MATRIX[2][2]);
+	depth_blend = exp((VERTEX.z + depth_blend) * -transparency);
+	depth_blend = min(depth_blend, 1.0);
+
+	EMISSION = textureLod(SCREEN_TEXTURE, refraction_uv, ROUGHNESS * 8.0).rgb * depth_blend;
+	ALBEDO = color.rgb * (1.0 - depth_blend);
 }
